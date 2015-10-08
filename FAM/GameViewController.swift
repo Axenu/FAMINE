@@ -94,7 +94,7 @@ class GameViewController:UIViewController, MTKViewDelegate {
         
         let drawable = view.currentDrawable
         let worldModelMatrix = Matrix4()
-        worldModelMatrix.translate(0.0, y: 0.0, z: -7.0)
+        worldModelMatrix.translate(0.0, y: 0.0, z: -6.0)
         worldModelMatrix.rotateAroundX(Matrix4.degreesToRad(25), y: 0.0, z: 0.0)
         
         objectToDraw.render(commandQueue, pipelineState: pipelineState, drawable: drawable!, parentModelViewMatrix: worldModelMatrix, projectionMatrix: projectionMatrix ,clearColor: nil)
