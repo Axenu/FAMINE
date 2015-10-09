@@ -14,6 +14,7 @@ class FAEngineViewController:UIViewController, MTKViewDelegate {
     
     let device: MTLDevice = MTLCreateSystemDefaultDevice()!
     var lastFrameTimestamp: CFTimeInterval = 0.0
+    var activeScene: FAScene!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,18 @@ class FAEngineViewController:UIViewController, MTKViewDelegate {
         view.device = device
         view.delegate = self
         
+        setScene(setInitialScene())
         
+    }
+    
+    func setScene(newScene: FAScene) {
+        activeScene = newScene
+        //TODO set callback for scene
+        //call scene init
+    }
+    
+    func setInitialScene() -> FAScene {
+        return FAScene()
     }
     
     func drawInMTKView(view: MTKView) {
