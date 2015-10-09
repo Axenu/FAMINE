@@ -24,4 +24,23 @@ class mat4 {
         
     }
     
+    init(fov: Float, aspect: Float, near: Float, far: Float) {
+        matrix = GLKMatrix4MakePerspective(fov, aspect, near, far);
+    }
+    
+    func rotate(angle: Float, axis: vec3) {
+        matrix = GLKMatrix4Rotate(matrix, angle, axis.x, axis.y, axis.z)
+    }
+    func rotate(angle: vec3) {
+        matrix = GLKMatrix4Rotate(matrix, angle.x, 1, 0, 0)
+        matrix = GLKMatrix4Rotate(matrix, angle.y, 0, 1, 0)
+        matrix = GLKMatrix4Rotate(matrix, angle.z, 0, 0, 1)
+    }
+    func translate(vec: vec3) {
+        matrix = GLKMatrix4Translate(matrix, vec.x, vec.y, vec.z)
+    }
+    func makePerspective(fov: Float, aspect: Float, near: Float, far: Float) {
+        matrix = GLKMatrix4MakePerspective(fov, aspect, near, far);
+    }
+    
 }
