@@ -24,6 +24,7 @@
 		359256E91BC7C750004B0ED4 /* mat4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359256E81BC7C750004B0ED4 /* mat4.swift */; };
 		359256EB1BC7CB2A004B0ED4 /* FAEngineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359256EA1BC7CB2A004B0ED4 /* FAEngineViewController.swift */; };
 		359256ED1BC7CD42004B0ED4 /* FAScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359256EC1BC7CD42004B0ED4 /* FAScene.swift */; };
+		359256EF1BC7CF2C004B0ED4 /* FACamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359256EE1BC7CF2C004B0ED4 /* FACamera.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		359256E81BC7C750004B0ED4 /* mat4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mat4.swift; sourceTree = "<group>"; };
 		359256EA1BC7CB2A004B0ED4 /* FAEngineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAEngineViewController.swift; sourceTree = "<group>"; };
 		359256EC1BC7CD42004B0ED4 /* FAScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAScene.swift; sourceTree = "<group>"; };
+		359256EE1BC7CF2C004B0ED4 /* FACamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FACamera.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				359256E61BC7AD0E004B0ED4 /* vec3.swift */,
 				359256EA1BC7CB2A004B0ED4 /* FAEngineViewController.swift */,
 				359256EC1BC7CD42004B0ED4 /* FAScene.swift */,
+				359256EE1BC7CF2C004B0ED4 /* FACamera.swift */,
 			);
 			path = FAM;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				350E3CB51BC6C8AF00310952 /* Shaders.metal in Sources */,
 				359256E51BC7AB57004B0ED4 /* FANode.swift in Sources */,
 				350E3CB31BC6C8AF00310952 /* GameViewController.swift in Sources */,
+				359256EF1BC7CF2C004B0ED4 /* FACamera.swift in Sources */,
 				350E3CB11BC6C8AF00310952 /* AppDelegate.swift in Sources */,
 				359256E71BC7AD0E004B0ED4 /* vec3.swift in Sources */,
 				35363FD01BC7073D001093AF /* Triangle.swift in Sources */,

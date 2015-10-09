@@ -10,4 +10,16 @@ import Foundation
 
 class FAScene {
     
+    func onInit() {
+        
+    }
+    
+    func onUpdate(dt: Float) {
+        
+    }
+    
+    func onRender() {
+        
+    }
+    
 }
