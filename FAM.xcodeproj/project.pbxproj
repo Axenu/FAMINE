@@ -19,6 +19,10 @@
 		35363FD01BC7073D001093AF /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35363FCF1BC7073D001093AF /* Triangle.swift */; };
 		35363FD21BC708B1001093AF /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35363FD11BC708B1001093AF /* Cube.swift */; };
 		359256E31BC711AB004B0ED4 /* Matrix4.m in Sources */ = {isa = PBXBuildFile; fileRef = 359256E21BC711AB004B0ED4 /* Matrix4.m */; };
+		359256E51BC7AB57004B0ED4 /* FANode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359256E41BC7AB57004B0ED4 /* FANode.swift */; };
+		359256E71BC7AD0E004B0ED4 /* vec3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359256E61BC7AD0E004B0ED4 /* vec3.swift */; };
+		359256E91BC7C750004B0ED4 /* mat4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359256E81BC7C750004B0ED4 /* mat4.swift */; };
+		359256EB1BC7CB2A004B0ED4 /* FAEngineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359256EA1BC7CB2A004B0ED4 /* FAEngineViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,10 @@
 		359256E01BC711AB004B0ED4 /* FAM-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FAM-Bridging-Header.h"; sourceTree = "<group>"; };
 		359256E11BC711AB004B0ED4 /* Matrix4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix4.h; sourceTree = "<group>"; };
 		359256E21BC711AB004B0ED4 /* Matrix4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Matrix4.m; sourceTree = "<group>"; };
+		359256E41BC7AB57004B0ED4 /* FANode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FANode.swift; sourceTree = "<group>"; };
+		359256E61BC7AD0E004B0ED4 /* vec3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vec3.swift; sourceTree = "<group>"; };
+		359256E81BC7C750004B0ED4 /* mat4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mat4.swift; sourceTree = "<group>"; };
+		359256EA1BC7CB2A004B0ED4 /* FAEngineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAEngineViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +130,10 @@
 				359256E11BC711AB004B0ED4 /* Matrix4.h */,
 				359256E21BC711AB004B0ED4 /* Matrix4.m */,
 				359256E01BC711AB004B0ED4 /* FAM-Bridging-Header.h */,
+				359256E41BC7AB57004B0ED4 /* FANode.swift */,
+				359256E81BC7C750004B0ED4 /* mat4.swift */,
+				359256E61BC7AD0E004B0ED4 /* vec3.swift */,
+				359256EA1BC7CB2A004B0ED4 /* FAEngineViewController.swift */,
 			);
 			path = FAM;
 			sourceTree = "<group>";
@@ -274,13 +286,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				350E3CB51BC6C8AF00310952 /* Shaders.metal in Sources */,
+				359256E51BC7AB57004B0ED4 /* FANode.swift in Sources */,
 				350E3CB31BC6C8AF00310952 /* GameViewController.swift in Sources */,
 				350E3CB11BC6C8AF00310952 /* AppDelegate.swift in Sources */,
+				359256E71BC7AD0E004B0ED4 /* vec3.swift in Sources */,
 				35363FD01BC7073D001093AF /* Triangle.swift in Sources */,
 				35363FCE1BC7064D001093AF /* Vertex.swift in Sources */,
+				359256EB1BC7CB2A004B0ED4 /* FAEngineViewController.swift in Sources */,
 				359256E31BC711AB004B0ED4 /* Matrix4.m in Sources */,
 				35363FD21BC708B1001093AF /* Cube.swift in Sources */,
 				35363FCC1BC7060E001093AF /* Node.swift in Sources */,
+				359256E91BC7C750004B0ED4 /* mat4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
