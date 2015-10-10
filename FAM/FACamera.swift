@@ -58,6 +58,4 @@ class FACamera : FANode {
         viewProjectionMatrix = projectionMatrix * viewMatrix
     }
     
-    
-    
 }

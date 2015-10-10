@@ -16,6 +16,9 @@ class FAEngineViewController:UIViewController, MTKViewDelegate {
     var lastFrameTimestamp: CFTimeInterval = 0.0
     var activeScene: FAScene!
     
+    var commandQueue: MTLCommandQueue! = nil
+    var pipelineState: MTLRenderPipelineState! = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,13 +28,16 @@ class FAEngineViewController:UIViewController, MTKViewDelegate {
         view.delegate = self
         
         setScene(setInitialScene())
-        
     }
     
     func setScene(newScene: FAScene) {
         activeScene = newScene
+        activeScene.setDevice(device)
+        activeScene.setWidth(Int(self.view.frame.width))
+        activeScene.setHeight(Int(self.view.frame.height))
         //TODO set callback for scene
         //call scene init
+        activeScene.onInit()
     }
     
     func setInitialScene() -> FAScene {
@@ -48,7 +54,9 @@ class FAEngineViewController:UIViewController, MTKViewDelegate {
         lastFrameTimestamp = NSDate().timeIntervalSince1970
         activeScene.onUpdate(Float(elapsed))
         //clear buffers?
-        activeScene.onRender()
+        let drawable = view.currentDrawable
+        
+        activeScene.onRender(drawable!)
     }
     
     func mtkView(view: MTKView, drawableSizeWillChange size: CGSize) {

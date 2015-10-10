@@ -25,6 +25,10 @@
 		359256EB1BC7CB2A004B0ED4 /* FAEngineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359256EA1BC7CB2A004B0ED4 /* FAEngineViewController.swift */; };
 		359256ED1BC7CD42004B0ED4 /* FAScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359256EC1BC7CD42004B0ED4 /* FAScene.swift */; };
 		359256EF1BC7CF2C004B0ED4 /* FACamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359256EE1BC7CF2C004B0ED4 /* FACamera.swift */; };
+		359256F11BC7D892004B0ED4 /* FAMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359256F01BC7D892004B0ED4 /* FAMesh.swift */; };
+		359256F31BC7E41D004B0ED4 /* tree.fa in Resources */ = {isa = PBXBuildFile; fileRef = 359256F21BC7E41D004B0ED4 /* tree.fa */; };
+		359256F51BC7F489004B0ED4 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359256F41BC7F489004B0ED4 /* StreamReader.swift */; };
+		359256F71BC7FCB2004B0ED4 /* vec2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359256F61BC7FCB2004B0ED4 /* vec2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,10 @@
 		359256EA1BC7CB2A004B0ED4 /* FAEngineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAEngineViewController.swift; sourceTree = "<group>"; };
 		359256EC1BC7CD42004B0ED4 /* FAScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAScene.swift; sourceTree = "<group>"; };
 		359256EE1BC7CF2C004B0ED4 /* FACamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FACamera.swift; sourceTree = "<group>"; };
+		359256F01BC7D892004B0ED4 /* FAMesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAMesh.swift; sourceTree = "<group>"; };
+		359256F21BC7E41D004B0ED4 /* tree.fa */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tree.fa; sourceTree = "<group>"; };
+		359256F41BC7F489004B0ED4 /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
+		359256F61BC7FCB2004B0ED4 /* vec2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vec2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,9 +145,13 @@
 				359256E41BC7AB57004B0ED4 /* FANode.swift */,
 				359256E81BC7C750004B0ED4 /* mat4.swift */,
 				359256E61BC7AD0E004B0ED4 /* vec3.swift */,
+				359256F61BC7FCB2004B0ED4 /* vec2.swift */,
 				359256EA1BC7CB2A004B0ED4 /* FAEngineViewController.swift */,
 				359256EC1BC7CD42004B0ED4 /* FAScene.swift */,
 				359256EE1BC7CF2C004B0ED4 /* FACamera.swift */,
+				359256F01BC7D892004B0ED4 /* FAMesh.swift */,
+				359256F21BC7E41D004B0ED4 /* tree.fa */,
+				359256F41BC7F489004B0ED4 /* StreamReader.swift */,
 			);
 			path = FAM;
 			sourceTree = "<group>";
@@ -265,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				359256F31BC7E41D004B0ED4 /* tree.fa in Resources */,
 				350E3CBA1BC6C8AF00310952 /* Assets.xcassets in Resources */,
 				350E3CB81BC6C8AF00310952 /* Main.storyboard in Resources */,
 			);
@@ -292,16 +305,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				350E3CB51BC6C8AF00310952 /* Shaders.metal in Sources */,
+				359256F11BC7D892004B0ED4 /* FAMesh.swift in Sources */,
 				359256E51BC7AB57004B0ED4 /* FANode.swift in Sources */,
 				350E3CB31BC6C8AF00310952 /* GameViewController.swift in Sources */,
 				359256EF1BC7CF2C004B0ED4 /* FACamera.swift in Sources */,
 				350E3CB11BC6C8AF00310952 /* AppDelegate.swift in Sources */,
+				359256F71BC7FCB2004B0ED4 /* vec2.swift in Sources */,
 				359256E71BC7AD0E004B0ED4 /* vec3.swift in Sources */,
 				35363FD01BC7073D001093AF /* Triangle.swift in Sources */,
 				35363FCE1BC7064D001093AF /* Vertex.swift in Sources */,
 				359256EB1BC7CB2A004B0ED4 /* FAEngineViewController.swift in Sources */,
 				359256E31BC711AB004B0ED4 /* Matrix4.m in Sources */,
 				359256ED1BC7CD42004B0ED4 /* FAScene.swift in Sources */,
+				359256F51BC7F489004B0ED4 /* StreamReader.swift in Sources */,
 				35363FD21BC708B1001093AF /* Cube.swift in Sources */,
 				35363FCC1BC7060E001093AF /* Node.swift in Sources */,
 				359256E91BC7C750004B0ED4 /* mat4.swift in Sources */,
