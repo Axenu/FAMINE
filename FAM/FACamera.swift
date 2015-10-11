@@ -48,7 +48,7 @@ class FACamera : FANode {
     }
     
     func initProjection() {
-        projectionMatrix = mat4(fov: fieldOfView, aspect: aspectRatio, near: nearPlane, far: farPlane)
+        projectionMatrix = mat4(perspectiveAngle: fieldOfView, aspectRatio: aspectRatio, nearPlane: nearPlane, farPlane: farPlane)
     }
     
     func useView() {

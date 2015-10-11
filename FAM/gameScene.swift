@@ -21,6 +21,8 @@ class GameScene : FAScene {
         let m = FAModel(mesh: model, device: device)
         self.addChild(m)
         
+        camera = FACamera(fov: mat4.degreesToRad(85.0), aspect: Float(self.width / self.height), near: 0.01, far: 100.0)
+        
 //        let defaultLibrary = device.newDefaultLibrary()
 //        let fragmentProgram = defaultLibrary!.newFunctionWithName("basic_fragment")
 //        let vertexProgram = defaultLibrary!.newFunctionWithName("basic_vertex")
@@ -39,7 +41,7 @@ class GameScene : FAScene {
 //        commandQueue = device.newCommandQueue()
 //        uniformBuffer = device.newBufferWithLength(sizeof(Float) * Matrix4.numberOfElements() * 2, options: [])
         
-        projectionMatrix = Matrix4.makePerspectiveViewAngle(Matrix4.degreesToRad(85.0), aspectRatio: Float(self.width / self.height), nearZ: 0.01, farZ: 100.0)
+//        projectionMatrix = mat4.makePerspectiveViewAngle(mat4.degreesToRad(85.0), aspectRatio: Float(self.width / self.height), nearZ: 0.01, farZ: 100.0)
         print("init")
     }
     

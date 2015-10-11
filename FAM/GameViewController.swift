@@ -20,7 +20,7 @@ class GameViewController:UIViewController, MTKViewDelegate {
     var commandQueue: MTLCommandQueue! = nil
     var pipelineState: MTLRenderPipelineState! = nil
     var objectToDraw: Cube!
-    var projectionMatrix: Matrix4!
+    var projectionMatrix: mat4!
     var lastFrameTimestamp: CFTimeInterval = 0.0
 //    var vertexColorBuffer: MTLBuffer! = nil
 //    
@@ -41,7 +41,7 @@ class GameViewController:UIViewController, MTKViewDelegate {
     
     func loadAssets() {
         
-        projectionMatrix = Matrix4.makePerspectiveViewAngle(Matrix4.degreesToRad(85.0), aspectRatio: Float(self.view.bounds.size.width / self.view.bounds.size.height), nearZ: 0.01, farZ: 100.0)
+        projectionMatrix = mat4.makePerspectiveViewAngle(mat4.degreesToRad(85.0), aspectRatio: Float(self.view.bounds.size.width / self.view.bounds.size.height), nearZ: 0.01, farZ: 100.0)
         
         objectToDraw = Cube(device: device)
 //        objectToDraw.positionX = 0.0
@@ -93,9 +93,9 @@ class GameViewController:UIViewController, MTKViewDelegate {
         
         
         let drawable = view.currentDrawable
-        let worldModelMatrix = Matrix4()
+        let worldModelMatrix = mat4()
         worldModelMatrix.translate(0.0, y: 0.0, z: -6.0)
-        worldModelMatrix.rotateAroundX(Matrix4.degreesToRad(25), y: 0.0, z: 0.0)
+        worldModelMatrix.rotateAroundX(mat4.degreesToRad(25), y: 0.0, z: 0.0)
         
         objectToDraw.render(commandQueue, pipelineState: pipelineState, drawable: drawable!, parentModelViewMatrix: worldModelMatrix, projectionMatrix: projectionMatrix ,clearColor: nil)
         

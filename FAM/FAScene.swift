@@ -24,12 +24,13 @@ class FAScene {
     
     var uniformBuffer: MTLBuffer?
     
-    var projectionMatrix: Matrix4?
+//    var projectionMatrix: mat4?
     
     var width = 0
     var height = 0
     
     func onInit() {
+        camera = FACamera(fov: mat4.degreesToRad(85.0), aspect: Float(self.width / self.height), near: 0.01, far: 100.0)
 //        let bundle = NSBundle.mainBundle()
 //        let pathNav = bundle.pathForResource("tree", ofType: "fa")
 //        model = FAMesh(path: pathNav!, device: device)
@@ -77,24 +78,25 @@ class FAScene {
 //        }
 //        
         commandQueue = device.newCommandQueue()
-        uniformBuffer = device.newBufferWithLength(sizeof(Float) * Matrix4.numberOfElements() * 2, options: [])
+        uniformBuffer = device.newBufferWithLength(sizeof(Float) * mat4.numberOfElements() * 2, options: [])
         
         renderPassDescriptor = MTLRenderPassDescriptor()
         renderPassDescriptor!.colorAttachments[0].loadAction = .Clear
         renderPassDescriptor!.colorAttachments[0].clearColor = MTLClearColor(red: 0.0, green: 104.0/255.0, blue: 5.0/255.0, alpha: 1.0)
         renderPassDescriptor!.colorAttachments[0].storeAction = .Store
 //        
-         projectionMatrix = Matrix4.makePerspectiveViewAngle(Matrix4.degreesToRad(85.0), aspectRatio: Float(self.width / self.height), nearZ: 0.01, farZ: 100.0)
+//         projectionMatrix = mat4.makePerspectiveViewAngle(mat4.degreesToRad(85.0), aspectRatio: Float(self.width / self.height), nearZ: 0.01, farZ: 100.0)
         
 //        print("init")
         self.setup()
         
-        let nodeModelMatrix = Matrix4()
+        let nodeModelMatrix = mat4()
         nodeModelMatrix.translate(0, y: 0, z: -10)
         //        nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
         let bufferPointer = uniformBuffer?.contents()
-        memcpy(bufferPointer!, nodeModelMatrix.raw(), sizeof(Float) * Matrix4.numberOfElements())
-        memcpy(bufferPointer! + sizeof(Float)*Matrix4.numberOfElements(), projectionMatrix!.raw(), sizeof(Float)*Matrix4.numberOfElements())
+        memcpy(bufferPointer!, nodeModelMatrix.raw(), sizeof(Float) * mat4.numberOfElements())
+        camera.useView()
+        memcpy(bufferPointer! + sizeof(Float)*mat4.numberOfElements(), camera.viewProjectionMatrix!.raw(), sizeof(Float)*mat4.numberOfElements())
     }
     
     func setup() {
