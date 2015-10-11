@@ -12,6 +12,7 @@ class FAScene {
     
     var device: MTLDevice = MTLCreateSystemDefaultDevice()!
     var renderPassDescriptor: MTLRenderPassDescriptor?
+    var renderEncoder: MTLRenderCommandEncoder?
     var rootNode: FANode!
     var models = [FAModel]()
 //    var model: FAMesh!
@@ -75,8 +76,8 @@ class FAScene {
 //            print("Failed to create pipline state, error: ")
 //        }
 //        
-//        commandQueue = device.newCommandQueue()
-//        uniformBuffer = device.newBufferWithLength(sizeof(Float) * Matrix4.numberOfElements() * 2, options: [])
+        commandQueue = device.newCommandQueue()
+        uniformBuffer = device.newBufferWithLength(sizeof(Float) * Matrix4.numberOfElements() * 2, options: [])
         
         renderPassDescriptor = MTLRenderPassDescriptor()
         renderPassDescriptor!.colorAttachments[0].loadAction = .Clear
@@ -84,8 +85,16 @@ class FAScene {
         renderPassDescriptor!.colorAttachments[0].storeAction = .Store
 //        
          projectionMatrix = Matrix4.makePerspectiveViewAngle(Matrix4.degreesToRad(85.0), aspectRatio: Float(self.width / self.height), nearZ: 0.01, farZ: 100.0)
+        
 //        print("init")
         self.setup()
+        
+        let nodeModelMatrix = Matrix4()
+        nodeModelMatrix.translate(0, y: 0, z: -10)
+        //        nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
+        let bufferPointer = uniformBuffer?.contents()
+        memcpy(bufferPointer!, nodeModelMatrix.raw(), sizeof(Float) * Matrix4.numberOfElements())
+        memcpy(bufferPointer! + sizeof(Float)*Matrix4.numberOfElements(), projectionMatrix!.raw(), sizeof(Float)*Matrix4.numberOfElements())
     }
     
     func setup() {
@@ -111,53 +120,17 @@ class FAScene {
         
         for child in models {
             
-            let renderEncoder = commandBuffer.renderCommandEncoderWithDescriptor(renderPassDescriptor!)
-            renderEncoder.setCullMode(MTLCullMode.Front)
-            renderEncoder.setRenderPipelineState(child.material!.pipelineState)
-            renderEncoder.setVertexBuffer(child.mesh!.vertexBuffer, offset: 0, atIndex: 0)
-            //
-            let nodeModelMatrix = Matrix4()
-            nodeModelMatrix.translate(0, y: 0, z: -10)
-            //        nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
-            let bufferPointer = uniformBuffer?.contents()
-            memcpy(bufferPointer!, nodeModelMatrix.raw(), sizeof(Float) * Matrix4.numberOfElements())
-            memcpy(bufferPointer! + sizeof(Float)*Matrix4.numberOfElements(), projectionMatrix!.raw(), sizeof(Float)*Matrix4.numberOfElements())
-            renderEncoder.setVertexBuffer(self.uniformBuffer, offset: 0, atIndex: 1)
-            
-            renderEncoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: child.mesh!.vertexCount)
-            renderEncoder.endEncoding()
+            renderEncoder = commandBuffer.renderCommandEncoderWithDescriptor(renderPassDescriptor!)
+            renderEncoder!.setCullMode(MTLCullMode.Front)
+            renderEncoder!.setRenderPipelineState(child.material!.pipelineState)
+            renderEncoder!.setVertexBuffer(child.mesh!.vertexBuffer, offset: 0, atIndex: 0)
+            renderEncoder!.setVertexBuffer(self.uniformBuffer, offset: 0, atIndex: 1)
+            renderEncoder!.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: child.mesh!.vertexCount)
+            renderEncoder!.endEncoding()
         }
         
         commandBuffer.presentDrawable(drawable)
         commandBuffer.commit()
-        
-//        let renderPassDescriptor = MTLRenderPassDescriptor()
-//        renderPassDescriptor.colorAttachments[0].texture = drawable.texture
-//        renderPassDescriptor.colorAttachments[0].loadAction = .Clear
-//        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.0, green: 104.0/255.0, blue: 5.0/255.0, alpha: 1.0)
-//        renderPassDescriptor.colorAttachments[0].storeAction = .Store
-//        let commandBuffer = commandQueue.commandBuffer()
-//        
-//        let renderEncoder = commandBuffer.renderCommandEncoderWithDescriptor(renderPassDescriptor)
-//        renderEncoder.setCullMode(MTLCullMode.Front)
-//        renderEncoder.setRenderPipelineState(pipelineState)
-//        renderEncoder.setVertexBuffer(model.vertexBuffer, offset: 0, atIndex: 0)
-//
-//        let nodeModelMatrix = Matrix4()
-//        nodeModelMatrix.translate(0, y: 0, z: -10)
-////        nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
-//        let bufferPointer = uniformBuffer?.contents()
-//        memcpy(bufferPointer!, nodeModelMatrix.raw(), sizeof(Float) * Matrix4.numberOfElements())
-//        memcpy(bufferPointer! + sizeof(Float)*Matrix4.numberOfElements(), projectionMatrix!.raw(), sizeof(Float)*Matrix4.numberOfElements())
-//        renderEncoder.setVertexBuffer(self.uniformBuffer, offset: 0, atIndex: 1)
-//        
-//        renderEncoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: model.vertexCount)
-//        renderEncoder.endEncoding()
-////
-//        commandBuffer.presentDrawable(drawable)
-//        commandBuffer.commit()
-        
-//        print("render secen")
     }
     
     func setDevice(device: MTLDevice) {

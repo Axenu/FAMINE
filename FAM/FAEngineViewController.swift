@@ -54,9 +54,9 @@ class FAEngineViewController:UIViewController, MTKViewDelegate {
         lastFrameTimestamp = NSDate().timeIntervalSince1970
         activeScene.onUpdate(Float(elapsed))
         //clear buffers?
-        let drawable = view.currentDrawable
+//        let drawable = view.currentDrawable
         
-        activeScene.onRender(drawable!)
+        activeScene.onRender(view.currentDrawable!)
     }
     
     func mtkView(view: MTKView, drawableSizeWillChange size: CGSize) {
