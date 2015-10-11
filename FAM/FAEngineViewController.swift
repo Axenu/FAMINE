@@ -41,7 +41,7 @@ class FAEngineViewController:UIViewController, MTKViewDelegate {
     }
     
     func setInitialScene() -> FAScene {
-        return FAScene()
+        return GameScene()
     }
     
     func drawInMTKView(view: MTKView) {
@@ -60,7 +60,6 @@ class FAEngineViewController:UIViewController, MTKViewDelegate {
     }
     
     func mtkView(view: MTKView, drawableSizeWillChange size: CGSize) {
-        
     }
     
 }

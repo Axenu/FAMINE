@@ -59,8 +59,9 @@ class FAMesh {
                 var count = 0
                 if (line == "v") {
                     count = Int(aStreamReader.nextLine()!)!
-                    let vec = vec3()
+                    var vec = vec3()
                     for (var i = 0; i < count; i++) {
+                        vec = vec3()
                         vec.x = Float(aStreamReader.nextLine()!)!
                         vec.y = Float(aStreamReader.nextLine()!)!
                         vec.z = Float(aStreamReader.nextLine()!)!
@@ -69,8 +70,9 @@ class FAMesh {
                 } else if (line == "n") {
                     hasNormal = true
                     count = Int(aStreamReader.nextLine()!)!
-                    let vec = vec3()
+                    var vec = vec3()
                     for (var i = 0; i < count; i++) {
+                        vec = vec3()
                         vec.x = Float(aStreamReader.nextLine()!)!
                         vec.y = Float(aStreamReader.nextLine()!)!
                         vec.z = Float(aStreamReader.nextLine()!)!
@@ -86,8 +88,9 @@ class FAMesh {
                     }
                 } else if (line == "m") {
                     count = Int(aStreamReader.nextLine()!)!
-                    let vec = vec3()
+                    var vec = vec3()
                     for (var i = 0; i < count; i++) {
+                        vec = vec3()
                         vec.x = Float(aStreamReader.nextLine()!)!
                         vec.y = Float(aStreamReader.nextLine()!)!
                         vec.z = Float(aStreamReader.nextLine()!)!
@@ -95,8 +98,9 @@ class FAMesh {
                     }
                 } else if (line == "uv") {
                     count = Int(aStreamReader.nextLine()!)!
-                    let vec = vec2()
+                    var vec = vec2()
                     for (var i = 0; i < count; i++) {
+                        vec = vec2()
                         vec.x = Float(aStreamReader.nextLine()!)!
                         vec.y = Float(aStreamReader.nextLine()!)!
                         UVArray.append(vec)
@@ -121,7 +125,7 @@ class FAMesh {
                             n = Int(aStreamReader.nextLine()!)!
                         }
                         if (hasColor) {
-                            face = colorArray[0]
+                            face = colorArray[n]
                         }
                         if (hasUV) {
                             uv1 = Int(aStreamReader.nextLine()!)!
